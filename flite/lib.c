@@ -1,7 +1,14 @@
 #include "flite.h"
 #include <string.h>
 
+#if defined(__EMSCRIPTEN__)
+  #include <emscripten.h>
+  #define LIB_EXPORT EMSCRIPTEN_KEEPALIVE
+#elif defined(_WIN32)
 #define LIB_EXPORT __declspec(dllexport)
+#else
+#error("Unsupported architecture")
+#endif
 
 // Exported methods we use that are not in flite.h
 cst_voice *register_cmu_us_kal(const char *voxdir);
@@ -69,4 +76,9 @@ LIB_EXPORT double flitelib_copy(char* buffer) {
     memcpy(buffer, wave->samples, _n);
 
     return (double) _n;
+}
+
+// Get the samples pointer to copy from. Returns null if no audio has been synthesized.
+LIB_EXPORT short *tts_samples_ptr(void) { 
+    return wave ? wave->samples : NULL; 
 }

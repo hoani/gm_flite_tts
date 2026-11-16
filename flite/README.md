@@ -11,3 +11,15 @@ Then compile the dll:
 ```
 x86_64-w64-mingw32-gcc -shared -O2 -s -o build/flitelib.dll lib.c -Ilib/include -Llib/build/x86_64-mingw32/lib -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -lflite -lm -static-libgcc -Wl,--gc-sections
 ```
+
+
+## Build for HTML5
+
+We need to install emscripten - https://emscripten.org/docs/getting_started/downloads.html tools for this.
+
+Then compile:
+
+```
+emcc -O2 lib.c -Ilib/include -Llib/build/x86_64-linux-gnu/lib -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -lflite -lm -sMODULARIZE=1 -sEXPORT_NAME=FliteModule -sSINGLE_FILE=1 -sENVIRONMENT=web -sALLOW_MEMORY_GROWTH=1 -sFORCE_FILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=ccall,HEAPU8,FS -o build/flitelib.js
+```
+
