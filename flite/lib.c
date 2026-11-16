@@ -11,32 +11,38 @@ cst_lexicon *cmu_lex_init(void);
 // voice holds the active voice for use at any give time.
 static cst_voice* voice;
 
-// the fallback/default voice
+// the fallback/default voice. The default requires no additional files
 static cst_voice* defaultVoice;
 
 // the current loaded waveform
 cst_wave * wave;
 
+// Instantiate flitelib - must be called first.
+// Currently, only registers english. 
 LIB_EXPORT double flitelib_init(void) {
     flite_init();
     flite_add_lang("eng", usenglish_init, cmu_lex_init);
     flite_add_lang("usenglish", usenglish_init, cmu_lex_init);
+    // Using kal keeps the flitelib around 3Mb.
     defaultVoice = register_cmu_us_kal(NULL);
     voice = defaultVoice;
     return 1.0;
 }
 
+// Set the voice back to the default
 LIB_EXPORT double flitelib_default_voice() {
     voice = defaultVoice;
     return 1.0;
 }
 
+// Selects a voice based on a path. If we fail to load the voice, we keep the currently active voice instead.
 LIB_EXPORT double flitelib_select_voice(const char *path) {
     cst_voice* v = flite_voice_select(path);
     voice = (v == NULL) ? voice : v;
     return (v == NULL) ? 0.0 : 1.0;
 }
 
+// Synthesize audio from text. Frees previously synthesized audio first.
 LIB_EXPORT double flitelib_synth(const char* text) {
     if (wave) { 
         delete_wave(wave); 
@@ -46,6 +52,7 @@ LIB_EXPORT double flitelib_synth(const char* text) {
     return wave ? (double)wave->num_samples : 0.0;
 }
 
+// Get the sample rate of the current audio. This depends on which voice is used.
 LIB_EXPORT double flitelib_get_rate(void) {
     if (wave == NULL) {
         return 0.0;
@@ -53,12 +60,13 @@ LIB_EXPORT double flitelib_get_rate(void) {
     return (double)wave->sample_rate;
 }
 
+// Copy lib data to a buffer. We expect that the buffer is sized appropriately based on the samples returned by synth.
 LIB_EXPORT double flitelib_copy(char* buffer) {
     if (wave == NULL) {
         return 0.0;
     }
-    memcpy(buffer, wave->samples, wave->num_samples*2);
-    int res = wave->num_samples * 2;
+    const int _n = wave->num_samples*2; // each sample is int16, so must copy twice that many bytes.
+    memcpy(buffer, wave->samples, _n);
 
-    return (double) res;
+    return (double) _n;
 }
