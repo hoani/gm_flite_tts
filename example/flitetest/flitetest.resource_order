@@ -1,0 +1,8 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"tts","order":1,"path":"extensions/tts/tts.yy",},
+    {"name":"objDemo","order":3,"path":"objects/objDemo/objDemo.yy",},
+    {"name":"scrTts","order":2,"path":"scripts/scrTts/scrTts.yy",},
+  ],
+}

@@ -1,0 +1,1 @@
+voiceIndex = (voiceIndex + 1) % array_length(voices)
