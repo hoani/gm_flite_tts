@@ -6,6 +6,8 @@
   #define LIB_EXPORT EMSCRIPTEN_KEEPALIVE
 #elif defined(_WIN32)
 #define LIB_EXPORT __declspec(dllexport)
+#elif defined(__GNUC__) || defined(__clang__)
+  #define LIB_EXPORT __attribute__((visibility("default")))
 #else
 #error("Unsupported architecture")
 #endif
