@@ -6,7 +6,7 @@ function tts_register(path) {
         return true;
     }
     
-    if os_type == os_gxgames {
+    if os_type == os_gxgames || os_browser != browser_not_a_browser {
         var _b = buffer_load(path);
         var _s = buffer_base64_encode(_b, 0, buffer_get_size(_b));
         buffer_delete(_b);
@@ -22,14 +22,21 @@ function tts_register(path) {
 
 
 function tts_speak(_text, _voice="") {
+    if os_browser != browser_not_a_browser {
+        return _tts_js_speak(_text, _voice)
+    }
+    
     switch os_type {
 		case os_gxgames:
 			return _tts_js_speak(_text, _voice)
 		case os_windows:
 			return _tts_win_speak(_text, _voice)
+        case os_linux:
+			return _tts_ubu_speak(_text, _voice)
 		case os_macosx:
 			return _tts_mac_speak(_text, _voice)
 		default:
+            
 			show_error("unsupported operating system", true)
 			return {}
     }
@@ -76,6 +83,21 @@ function _tts_win_speak(_text, _voice) {
     var _rate = flitetts_win_get_rate();
     var _buf  = buffer_create(_n * 4, buffer_fixed, 1);
     var _size = flitetts_win_copy(buffer_get_address(_buf));
+    buffer_set_used_size(_buf, _size);
+    var _snd  = audio_create_buffer_sound(_buf, buffer_s16, _rate, 0, _n*2, audio_mono);
+    return { sound: _snd, buffer: _buf }; // caller frees the sound, then deletes the buffer
+}
+
+function _tts_ubu_speak(_text, _voice) {
+    if _voice == "" {
+        flitetts_ubu_default_voice()
+    } else {
+        flitetts_ubu_select_voice(working_directory +_voice)
+    }
+    var _n    = flitetts_ubu_synth(_text);
+    var _rate = flitetts_ubu_get_rate();
+    var _buf  = buffer_create(_n * 4, buffer_fixed, 1);
+    var _size = flitetts_ubu_copy(buffer_get_address(_buf));
     buffer_set_used_size(_buf, _size);
     var _snd  = audio_create_buffer_sound(_buf, buffer_s16, _rate, 0, _n*2, audio_mono);
     return { sound: _snd, buffer: _buf }; // caller frees the sound, then deletes the buffer
