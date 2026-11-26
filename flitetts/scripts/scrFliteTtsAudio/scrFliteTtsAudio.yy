@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrFliteTtsAudio",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrFliteTtsAudio",
+  "parent":{
+    "name":"flitetts",
+    "path":"flitetts.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

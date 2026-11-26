@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrTts",
+  "%Name":"scrFliteTtsSpeak",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrTts",
+  "name":"scrFliteTtsSpeak",
   "parent":{
-    "name":"flitetest",
-    "path":"flitetest.yyp",
+    "name":"flitetts",
+    "path":"flitetts.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

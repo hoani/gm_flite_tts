@@ -1,0 +1,37 @@
+{
+  "Version": "1.0",
+  "assets": [
+    {
+      "export": 2,
+      "name": "datafiles/cmu_us_aew.flitevox"
+    },
+    {
+      "export": 2,
+      "name": "datafiles/cmu_us_ahw.flitevox"
+    },
+    {
+      "export": 2,
+      "name": "datafiles/cmu_us_aup.flitevox"
+    },
+    {
+      "export": 2,
+      "name": "datafiles/cmu_us_awb.flitevox"
+    },
+    {
+      "export": 2,
+      "name": "datafiles/cmu_us_axb.flitevox"
+    },
+    {
+      "export": 1,
+      "name": "flitetts"
+    },
+    {
+      "export": 2,
+      "name": "scrFliteTtsApi"
+    },
+    {
+      "export": 1,
+      "name": "scrFliteTtsSpeak"
+    }
+  ]
+}

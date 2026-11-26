@@ -1,0 +1,10 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"flitetts","order":1,"path":"extensions/flitetts/flitetts.yy",},
+    {"name":"objDemo","order":3,"path":"objects/objDemo/objDemo.yy",},
+    {"name":"scrFliteTtsApi","order":2,"path":"scripts/scrFliteTtsApi/scrFliteTtsApi.yy",},
+    {"name":"scrFliteTtsAudio","order":5,"path":"scripts/scrFliteTtsAudio/scrFliteTtsAudio.yy",},
+    {"name":"scrFliteTtsSpeak","order":4,"path":"scripts/scrFliteTtsSpeak/scrFliteTtsSpeak.yy",},
+  ],
+}

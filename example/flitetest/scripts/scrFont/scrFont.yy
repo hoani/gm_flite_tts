@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrFont",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrFont",
+  "parent":{
+    "name":"flitetest",
+    "path":"flitetest.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

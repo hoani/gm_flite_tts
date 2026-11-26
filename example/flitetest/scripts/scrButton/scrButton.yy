@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrButton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrButton",
+  "parent":{
+    "name":"flitetest",
+    "path":"flitetest.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
