@@ -4,6 +4,12 @@ function FliteTtsAudio(_buffer, _rate) constructor {
     handle = undefined
     
     function Cleanup() {
+        if is_undefined(handle) {
+            _Cleanup()
+        }
+    }
+    
+    function Cleanup() {
         if (sound == noone) {
             return
         }

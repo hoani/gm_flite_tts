@@ -1,3 +1,7 @@
+This directory builds gamemaker compatable libraries. The built libraries are then included in the flitetts gamemaker project.
+
+The instructions below explain how to build for each supported platform.
+
 ## Build for Windows
 
 Using wsl, install `x86_64-w64-mingw32-gcc`
