@@ -12,7 +12,7 @@ function _flitetts_js_register_voice(path) {
 
 function _flitetts_js_speak(_text, _voice) {
     if !flitetts_js_ready() {
-        return;
+        return new FliteTtsAudio();
     }
     if _voice == "" {
         flitetts_js_default_voice()
