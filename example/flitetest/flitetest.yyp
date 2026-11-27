@@ -14,7 +14,7 @@
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
-    {"link":"net.hoani.flitetts-0.0.3","name":"net.hoani.flitetts-0.0.3","path":"net.hoani.flitetts-0.0.3.yyp",},
+    {"link":"net.hoani.flitetts-1.0.0","name":"net.hoani.flitetts-1.0.0","path":"net.hoani.flitetts-1.0.0.yyp",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"cmu_us_aew.flitevox","CopyToMask":-1,"filePath":"datafiles","name":"cmu_us_aew.flitevox","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
